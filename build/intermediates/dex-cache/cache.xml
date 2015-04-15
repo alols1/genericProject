@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\tosve3\.gradle\caches\modules-2\files-2.1\com.jayway.android.robotium\robotium-solo\5.2.1\56ab8d87d966a067ee3795ee137fbd51b6581ec9\robotium-solo-5.2.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="56ab8d87d966a067ee3795ee137fbd51b6581ec9">
+        <dex dex="C:\Users\tosve3\AndroidstudioProjects\generic\app\build\intermediates\pre-dexed\release\robotium-solo-5.2.1-8b3859e7ee489bfca6512faf11c5076d9b1487a2.jar" />
+    </item>
+    <item
+        jar="C:\Users\tosve3\AndroidstudioProjects\generic\app\src\android-numberpicker-sample-1.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b007fa014d84ef43cac21527d033f2d8c83de91a">
+        <dex dex="C:\Users\tosve3\AndroidstudioProjects\generic\app\build\intermediates\pre-dexed\release\android-numberpicker-sample-1.0.0-e0d3ddf0f7120f816382cfaad2798754c49eed3f.jar" />
+    </item>
+
+</items>
