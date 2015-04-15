@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
+
+    if(project.hasProperty("generic.signing")
+            && new File(project.property("generic.signing") + ".gradle").exists()) {
+        apply from: project.property("generic.signing") + ".gradle";
+    }
 }
 
 dependencies {
