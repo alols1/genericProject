@@ -33,6 +33,7 @@ public class MainClass extends ActivityInstrumentationTestCase2 {
     protected static final String BUTTON_TEXT_OK = "OK";
     protected static final String BUTTON_TEXT_TRY_AGAIN = "Försök igen";
     protected static final int timeout = 60000;
+    protected static final String FILE_NAME_TESTCASE_LOG = "/data/local/tmp/logg.txt";
 
 
 
@@ -64,19 +65,6 @@ public class MainClass extends ActivityInstrumentationTestCase2 {
         solo = new Solo(getInstrumentation());
         logging("Will get activity.");
         getActivity();
-        //Activity test = this.getActivity();
-        
-       // android.support.v4.app.FragmentActivity fa = (android.support.v4.app.FragmentActivity) solo.getCurrentActivity();
-        //getActivity().getFragmentManager();
-
-        logging("Hej");
-        //FragmentManager fm = solo.getCurrentActivity().getFragmentManager();
-       // Fragment fragment = solo.getCurrentActivity().getSupportFragmentManager();
-       // FragmentActivity activity = getActivity();
-       // Fragment fragment = solo.getCurrentActivity().getFragmentManager().findFragmentByTag("FragmentHomeActivity");
-
-
-       // FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     }
 
     /**
@@ -116,11 +104,11 @@ public class MainClass extends ActivityInstrumentationTestCase2 {
      *
      * @param s String to be logged.
      */
-    public void logging(final String s) {
+    protected void logging(final String s) {
         try {
-            String filename = "/data/local/tmp/logg.txt";
+            String filename = FILE_NAME_TESTCASE_LOG;
             FileWriter fw = new FileWriter(filename, true); //the true will append the new data
-            fw.write(s + "\r\n");
+            fw.write(getTimestampForLogPrint() + " " + s + "\r\n");//appends the string to the file
             fw.close();
         } catch (IOException ioe) {
             System.err.println("IOException: " + ioe.getMessage());
