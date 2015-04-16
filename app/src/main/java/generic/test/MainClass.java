@@ -39,8 +39,8 @@ public class MainClass extends ActivityInstrumentationTestCase2 {
 
     static {
         try {
-            launcherActivityClass = Class.forName("se.fskab.android.reseplaneraren.Splash");
-            //launcherActivityClass = Class.forName("com.imdb.mobile.HomeActivity");
+            //launcherActivityClass = Class.forName("se.fskab.android.reseplaneraren.Splash");
+            launcherActivityClass = Class.forName("com.imdb.mobile.HomeActivity");
             //launcherActivityClass = Class.forName("se.sfbio.mobile.android.SplashActivity");
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
