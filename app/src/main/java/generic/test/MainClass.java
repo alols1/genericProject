@@ -56,7 +56,8 @@ public class MainClass extends ActivityInstrumentationTestCase2 {
      */
     @Override
     protected void setUp() throws Exception {
-
+        logging("Initiating setup....");
+        logging("Setting up testcase: " + this.getClass().getSimpleName());
         logging("Will initate the solo object.");
         super.setUp();
         logging("Will iniate solo.");
