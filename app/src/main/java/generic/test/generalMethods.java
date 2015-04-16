@@ -19,6 +19,7 @@ public class generalMethods extends MainClass {
      * @param text The text String to search for. This should contain no special characters.
      */
     protected void clickOnTextCaseInsensitive(String text) {
+        logging("Will click on text " + text + ".");
         solo.clickOnText("(?i)" + text);
     }
 
@@ -31,6 +32,7 @@ public class generalMethods extends MainClass {
      * @return True if the String was found.
      */
     protected boolean searchTextCaseInsensitive(String text) {
+        logging("Will search for " + text + ".");
         return solo.searchText("(?i)" + text);
     }
 
@@ -44,6 +46,7 @@ public class generalMethods extends MainClass {
      * @return True if the String was found.
      */
     protected boolean searchTextCaseInsensitive(String text, boolean onlyVisible) {
+        logging("Will search for " + text + ", but only if visible on screen.");
         return solo.searchText("(?i)" + text,onlyVisible );
     }
 
@@ -66,7 +69,7 @@ public class generalMethods extends MainClass {
      * @return True if object exists.l
      */
     public boolean doesItemExist(final String name) {
-
+        logging("Will start looking for the object " + name + ".");
         if (solo.getCurrentActivity().findViewById(solo.getCurrentActivity().getResources().getIdentifier(name, "id", solo.getCurrentActivity().getPackageName())) != null) {
             return true;
         } else {
@@ -83,10 +86,11 @@ public class generalMethods extends MainClass {
      * @return True if object exists.l
      */
     public boolean doesItemExistWithoutFailure(final String name) {
-
+        logging("Will start looking for the object " + name + ".");
         if (solo.getCurrentActivity().findViewById(solo.getCurrentActivity().getResources().getIdentifier(name, "id", solo.getCurrentActivity().getPackageName())) != null) {
             return true;
         } else {
+            logging("Could not find the object " + name + " but will not fail test case.");
             return false;
         }
     }
@@ -114,10 +118,6 @@ public class generalMethods extends MainClass {
         }
     }
 
-
-
-
-
     /**
      * Will check every 5 seconds if there is a progress bar currently in view.
      * If so, it will make a sleep and then check agian. After 1 minute it will report an error.
@@ -138,8 +138,30 @@ public class generalMethods extends MainClass {
     }
 
     /**
-     * Waits for a specified view to be loaded within a minute. If the view is not loaded, it will first
-     * check if there is a progress bar and wait for it to disappear (or the function will eventually
+     * Will check every 5 seconds if there is a progress bar currently in view.
+     * If so, it will make a sleep and then check again. After 1 minute it will report an error.
+     * This method will search for a progress bar other than the standard. Of course this could be
+     * an object representing a progress bar such that it shows when a page is loading.
+     * @param progressbarClass The class which represents a progress bar.
+     */
+    protected <T extends View> void waitForProgressBar(final Class<T> progressbarClass) {
+        int t = 0;
+        final int NTIMES_MAX = 15;
+        while (!solo.getCurrentViews(progressbarClass).isEmpty() && t < NTIMES_MAX) {
+            logging("There was a progress bar.");
+            solo.sleep(5000);
+            t++;
+            if (t == NTIMES_MAX) {
+                reportError("There was a progress bar that time out.");
+            }
+
+        }
+    }
+
+    /**
+     * Waits for a specified view to be loaded within the time out limit. If the view is not loaded, it will first
+     * check if there is a progress bar (checking for the standard Android progress bar)
+     * and then wait for it to disappear (or the function will eventually
      * report an error) and then will check if there is any choice to try again.
      *
      * @param classToLoad              The class to load. This needs to be a subclass of android.view.View.
@@ -180,6 +202,57 @@ public class generalMethods extends MainClass {
         return true;
     }
 
+
+
+    /**
+     * Waits for a specified view to be loaded within the time out limit. If the view is not loaded, it will first
+     * check if there is a progress bar (checking for the standard Android progress bar)
+     * and then wait for it to disappear (or the function will eventually
+     * report an error) and then will check if there is any choice to try again.
+     *
+     * @param classToLoad              The class to load. This needs to be a subclass of android.view.View.
+     * @param noObjects                The number of objects of the specified class that this method will expect.
+     * @param numberTries              Use this parameter to allow multiple attempts to find the View. Useful if network conditions are suboptimal.
+     * @param descriptionOfViewLoading A description of the view. This String will be printed in the logfile if the View is not loaded correctly.
+     * @param progressbarClass         The class that the progress bar is contained in.
+     * @return True if the View is loaded successfully.
+     */
+    protected <T extends View> boolean loadView(final Class<T> classToLoad, final int noObjects, final int numberTries, final String descriptionOfViewLoading, final Class<T> progressbarClass) {
+        logging("Will wait for " + classToLoad + " to be loaded.");
+        if (!solo.waitForView(classToLoad, noObjects, timeout)) {
+            logging("The first attmept to load the view timed out");
+            for (int i = 0; i < numberTries; i++) {
+                logging("This is try number " + i + " that we have made so far.");
+                //The below checks should search for a way to reconnect if there is any
+                //This could be that the application gives you the option to reload etc.
+                //Below are two examples of buttons that may appear when having connection issues.
+                //Needs to be adjusted with respect of application under test.
+
+//                if (searchTextCaseInsensitive(BUTTON_TEXT_OK)) {
+//                    logging("Found a OK button and will press it.");
+//                    clickOnTextCaseInsensitive(BUTTON_TEXT_OK);
+//                } else if (searchTextCaseInsensitive(BUTTON_TEXT_TRY_AGAIN)) {
+//                    logging("Found a TRY AGAIN button and will press it.");
+//                    clickOnTextCaseInsensitive(BUTTON_TEXT_TRY_AGAIN);
+//                }
+
+                waitForProgressBar(progressbarClass);
+                if (solo.waitForView(classToLoad, noObjects, timeout)) {
+                    logging("Class " + classToLoad + " was loaded correctly.");
+                    return true;
+                }
+            }
+            logging(descriptionOfViewLoading);
+            reportError("Was not able to load view " + classToLoad);
+        }
+        logging("Class " + classToLoad + " was loaded correctly.");
+        return true;
+    }
+    /**
+     * This method will simulate a done/enter button press.Robotium will not be able to communicate
+     * with anything else than the launched application (the class launced).
+     * This will give problems when typing in text and the soft keyboard is up which this method fixes.
+     */
     public void ImeDone() //throws Exception
     {
         //Grab a reference to your EditText.  This code grabs the first Edit Text in the Activity
