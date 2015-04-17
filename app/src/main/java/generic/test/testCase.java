@@ -47,7 +47,6 @@ public class testCase extends applicationSpecificMethods {
         //If we reach this point, the test case has been a success and we can report that.
         reportSuccess();
 
-
     }
 
 }
