@@ -13,6 +13,7 @@ public class testCase extends applicationSpecificMethods {
         waitForApplicationToStart(5000);
         //The below code is specific for the imdb application but serve as an example.
         getAndClickOnView("com.imdb.mobile:id/search", 0);
+        //commented
         //View searchButton = solo.getView("com.imdb.mobile:id/search", 0);
         //solo.clickOnView(searchButton);
         solo.sleep(2000);
