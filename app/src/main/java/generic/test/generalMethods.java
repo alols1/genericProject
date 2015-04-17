@@ -95,10 +95,15 @@ public class generalMethods extends MainClass {
         }
     }
 
-    public void getAndClickOnView (String resouceID, int index){
-        doesItemExist(resouceID);
-        View view = solo.getView(resouceID, index);
-        logging("Found a view with resource id " + resouceID + " and will click on it.");
+    /**
+     * Will first check if the view exists and if so click on it.
+     * @param resourceID The resource id of the view we want to click on.
+     * @param index The index of the view we want to click on.
+     */
+    public void getAndClickOnView (String resourceID, int index){
+        doesItemExist(resourceID);
+        View view = solo.getView(resourceID, index);
+        logging("Found a view with resource id " + resourceID + " and will click on it.");
         solo.clickOnView(view);
     }
 

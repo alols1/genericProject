@@ -13,9 +13,6 @@ public class testCase extends applicationSpecificMethods {
         waitForApplicationToStart(5000);
         //The below code is specific for the imdb application but serve as an example.
         getAndClickOnView("com.imdb.mobile:id/search", 0);
-        //commented
-        //View searchButton = solo.getView("com.imdb.mobile:id/search", 0);
-        //solo.clickOnView(searchButton);
         solo.sleep(2000);
         solo.clearEditText(0);
         solo.typeText(0, "Test Pilot");
@@ -28,19 +25,16 @@ public class testCase extends applicationSpecificMethods {
 
 //        //The below code will work for the skanetrafiken application.
 //        solo.clickOnImage(0);
-//        View selectTimeButton = solo.getView("se.fskab.android.reseplaneraren:id/travelplan_timefield", 0);
-//        solo.clickOnView(selectTimeButton);
+//        getAndClickOnView("se.fskab.android.reseplaneraren:id/travelplan_timefield", 0);
 //        solo.sleep(2000);
 //        View timeNowButton = solo.getView("android:id/button3", 0);
 //        solo.clickOnView(timeNowButton);
-//        View fromStation = solo.getView("se.fskab.android.reseplaneraren:id/travelplan_stopfieldfrom");
-//        solo.clickOnView(fromStation);
+//        getAndClickOnView("se.fskab.android.reseplaneraren:id/travelplan_stopfieldfrom", 0);
 //        solo.enterText(0, "Malmö");
 //        solo.sleep(2000);
 //        searchAndReport(searchTextCaseInsensitive("Malmö C"), "Found the correct page.", "Didn't find the correct page.");
 //        clickOnTextCaseInsensitive("Malmö C");
-//        View toStation = solo.getView("se.fskab.android.reseplaneraren:id/travelplan_stopfieldto");
-//        solo.clickOnView(toStation);
+//        getAndClickOnView("se.fskab.android.reseplaneraren:id/travelplan_stopfieldto", 0);
 //        solo.enterText(0, "Lund");
 //        solo.sleep(2000);
 //        searchAndReport(searchTextCaseInsensitive("Lund C"), "Found the correct page.", "Didn't find the correct page.");
