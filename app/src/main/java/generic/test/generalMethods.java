@@ -95,6 +95,15 @@ public class generalMethods extends MainClass {
         }
     }
 
+    public void getAndClickOnView (String resouceID, int index){
+        doesItemExist(resouceID);
+        View view = solo.getView(resouceID, index);
+        logging("Found a view with resource id " + resouceID + " and will click on it.");
+        solo.clickOnView(view);
+    }
+
+
+
     /**
      *
      * Will check if the items from the provided list exists within the application using text search.
