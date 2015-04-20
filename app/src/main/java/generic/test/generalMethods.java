@@ -128,7 +128,17 @@ public class generalMethods extends MainClass {
 
 
     }
-
+    /**
+     * First clear a edit text and then enters text into it. It will finish by
+     * emulating an enter key press.
+     * @param s The text we want to type.
+     * @param index The index of the text field
+     */
+    public void enterTextInField(String s, int index){
+        solo.clearEditText(index);
+        solo.typeText(index, s);
+        ImeDone();
+    }
 
 
     /**
@@ -285,6 +295,11 @@ public class generalMethods extends MainClass {
         return true;
     }
 
+    /**
+     * Returns a random number between 0 and the provided parameter-1
+     * @param i This -1 will be the highest possible random number returned.
+     * @return A randomly generated number.
+     */
     public int getRandomNumber(int i){
         Random rn = new Random();
         return rn.nextInt(i);

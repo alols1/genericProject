@@ -12,14 +12,9 @@ public class testCase extends applicationSpecificMethods {
     public void testCase() {
         waitForApplicationToStart(5000);
         //The below code is specific for the imdb application but serve as an example.
-        for (int i = 0; i < 100; i++){
-            logging(Integer.toString(getRandomNumber(50)));
-        }
         getAndClickOnView("com.imdb.mobile:id/search", 0);
         solo.sleep(2000);
-        solo.clearEditText(0);
-        solo.typeText(0, "Test Pilot");
-        ImeDone();
+        enterTextInField("Test Pilot", 0);
         solo.sleep(5000);
         searchAndReport(searchTextCaseInsensitive("Search Results"), "Made a search.", "Was not able to confirm that a search was made.");
         searchAndReport(searchTextCaseInsensitive("Test Pilot"), "The requested search text was found during the search.", "Could not find the text which was searched for.");
