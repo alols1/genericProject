@@ -109,7 +109,7 @@ public class generalMethods extends MainClass {
     }
 
     public String readTextFromTextView (String s){
-        TextView readFromApp = (TextView) solo.getView(s, 12);
+        TextView readFromApp = (TextView) solo.getView(s, 8);
         String fromApp = (String) readFromApp.getText();
         logging("String read from application: " + fromApp + ".");
         return fromApp;
