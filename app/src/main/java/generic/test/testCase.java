@@ -12,7 +12,7 @@ public class testCase extends applicationSpecificMethods {
     public void testCase() {
         waitForApplicationToStart(5000);
         //The below code is specific for the imdb application but serve as an example.
-        readTextFromTextView("com.imdb.mobile:id/header");
+        readTextFromTextView("com.imdb.mobile:id/label");
         getAndClickOnView("com.imdb.mobile:id/search", 0);
         solo.sleep(2000);
         solo.clearEditText(0);
