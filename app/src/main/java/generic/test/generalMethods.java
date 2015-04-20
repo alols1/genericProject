@@ -3,6 +3,7 @@ package generic.test;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -105,6 +106,15 @@ public class generalMethods extends MainClass {
         View view = solo.getView(resourceID, index);
         logging("Found a view with resource id " + resourceID + " and will click on it.");
         solo.clickOnView(view);
+    }
+
+    public String readTextFromTextView (String s){
+        TextView readFromApp = (TextView) solo.getView(s);
+        String fromApp = (String) readFromApp.getText();
+        logging(fromApp);
+        return fromApp;
+
+
     }
 
 
