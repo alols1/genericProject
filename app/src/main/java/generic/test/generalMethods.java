@@ -5,7 +5,11 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Random;
 
 public class generalMethods extends MainClass {
 
@@ -280,6 +284,13 @@ public class generalMethods extends MainClass {
         logging("Class " + classToLoad + " was loaded correctly.");
         return true;
     }
+
+    public int getRandomNumber(int i){
+        Random rn = new Random();
+        return rn.nextInt(i);
+
+    }
+
     /**
      * This method will simulate a done/enter button press.Robotium will not be able to communicate
      * with anything else than the launched application (the class launced).
@@ -303,5 +314,6 @@ public class generalMethods extends MainClass {
         //Use Solo to get the current activity, and pass our runnable to the UI thread.
         solo.getCurrentActivity().runOnUiThread(runnable);
     }
+
 
 }
