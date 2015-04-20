@@ -108,8 +108,16 @@ public class generalMethods extends MainClass {
         solo.clickOnView(view);
     }
 
-    public String readTextFromTextView (String s){
-        TextView readFromApp = (TextView) solo.getView(s, 8);
+
+    /**
+     * This method reads the text from a text view within the application.
+     * Be aware of the index if there is more than one text view with the same resource id.
+     * @param s The resource id of the view we want read from.
+     * @param index The index of the text view we want to read from.
+     * @return The text string from the TextView.
+     */
+    public String readTextFromTextView (String s, int index){
+        TextView readFromApp = (TextView) solo.getView(s, index);
         String fromApp = (String) readFromApp.getText();
         logging("String read from application: " + fromApp + ".");
         return fromApp;
