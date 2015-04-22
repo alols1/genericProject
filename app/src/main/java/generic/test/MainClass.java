@@ -7,11 +7,14 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.view.View;
 import com.robotium.solo.Solo;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -29,6 +32,8 @@ public class MainClass extends ActivityInstrumentationTestCase2 {
     protected static final String BUTTON_TEXT_TRY_AGAIN = "Försök igen";
     protected static final int timeout = 60000;
     protected static final String FILE_NAME_TESTCASE_LOG = "/data/local/tmp/logg.txt";
+//    protected static final String FILE_NAME_INIFILE = "/data/local/tmp/Test_ini.txt";
+//    protected static ArrayList<String> settingsArray = new ArrayList<String>();
 
 
 
@@ -53,6 +58,28 @@ public class MainClass extends ActivityInstrumentationTestCase2 {
     @Override
     protected void setUp() throws Exception {
         logging("Initiating setup....");
+
+//        /**
+//         * This part will read info from a ini file which can be pushed onto the phone at
+//         * "/data/local/tmp/Test_ini.txt" if desired. Could prove useful if there is content,
+//         * for example passwords that the apk needs access to but are not wanted to put
+//         * in a Git repository. For every row that contains <iniSet>, it will read the
+//         * information from that mark to </iniSet>.
+//         */
+//        BufferedReader br = new BufferedReader(new FileReader(FILE_NAME_INIFILE));
+//        try {
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                if (line.contains("<iniSet>")) {
+//                    line = line.replace("<iniSet>", "");
+//                    line = line.replace("</iniSet>", "");
+//                    settingsArray.add(line);
+//                }
+//            }
+//        } finally {
+//            br.close();
+//        }
+
         logging("Setting up testcase: " + this.getClass().getSimpleName());
         logging("Will initate the solo object.");
         super.setUp();
