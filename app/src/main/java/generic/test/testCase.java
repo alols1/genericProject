@@ -25,8 +25,7 @@ public class testCase extends applicationSpecificMethods {
 //        solo.clickOnImage(0);
 //        getAndClickOnView("se.fskab.android.reseplaneraren:id/travelplan_timefield", 0);
 //        solo.sleep(2000);
-//        View timeNowButton = solo.getView("android:id/button3", 0);
-//        solo.clickOnView(timeNowButton);
+//        getAndClickOnView("android:id/button3", 0);
 //        getAndClickOnView("se.fskab.android.reseplaneraren:id/travelplan_stopfieldfrom", 0);
 //        solo.enterText(0, "Malmö");
 //        solo.sleep(2000);
@@ -37,8 +36,7 @@ public class testCase extends applicationSpecificMethods {
 //        solo.sleep(2000);
 //        searchAndReport(searchTextCaseInsensitive("Lund C"), "Found the correct page.", "Didn't find the correct page.");
 //        clickOnTextCaseInsensitive("Lund C");
-//        View searchButton = solo.getView("se.fskab.android.reseplaneraren:id/menu_search");
-//        solo.clickOnView(searchButton);
+//        getAndClickOnView("se.fskab.android.reseplaneraren:id/menu_search", 0);
 //        solo.sleep(5000);
 //        searchAndReport(searchTextCaseInsensitive("Connection alternatives"), "Got to the correct page.", "Didn't go to the correct page.");
 

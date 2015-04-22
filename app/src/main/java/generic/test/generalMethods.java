@@ -20,7 +20,6 @@ public class generalMethods extends MainClass {
     /**
      * Clicks on a button with the specified String. Does not take into account upper or lower case.
      * This is the same as calling solo.clickOnText(text), but matches regardless of case.
-     *
      * @param text The text String to search for. This should contain no special characters.
      */
     protected void clickOnTextCaseInsensitive(String text) {
@@ -32,7 +31,6 @@ public class generalMethods extends MainClass {
      * Searches for the specified String, and returns True if the String was found.
      * Does not take into account upper or lower case.
      * This is the same as calling solo.searchText(text), but matches regardless of case.
-     *
      * @param text The text String to search for. This should contain no special characters.
      * @return True if the String was found.
      */
@@ -45,7 +43,6 @@ public class generalMethods extends MainClass {
      * Searches for the specified String, and returns True if the String was found.
      * Does not take into account upper or lower case.
      * This is the same as calling solo.searchText(text), but matches regardless of case.
-     *
      * @param text        The text String to search for. This should contain no special characters.
      * @param onlyVisible Whether or not Solo should attempt to scroll in order to find the specified String.
      * @return True if the String was found.
@@ -67,7 +64,6 @@ public class generalMethods extends MainClass {
 
 
     /**
-     *
      * Check if the view resource id name exist in the current activity views.
      * Otherwise there is an error will be reported and the test case fails.
      * @param name Resource id of the object
@@ -84,7 +80,6 @@ public class generalMethods extends MainClass {
     }
 
     /**
-     *
      * Check if the view resource id name exist in the current activity views.
      * If object is not found, it will return false without reporting error.
      * @param name Resource id of the object
@@ -135,6 +130,7 @@ public class generalMethods extends MainClass {
      * @param index The index of the text field
      */
     public void enterTextInField(String s, int index){
+        logging("Will write " + s + " to a edit text field.");
         solo.clearEditText(index);
         solo.typeText(index, s);
         ImeDone();
@@ -142,7 +138,6 @@ public class generalMethods extends MainClass {
 
 
     /**
-     *
      * Will check if the items from the provided list exists within the application using text search.
      * @param list A list containing the strings we want to search for in the list.
      * @param scroll If true, the method will scroll to the top of the list between checking for each item.
@@ -255,7 +250,6 @@ public class generalMethods extends MainClass {
      * check if there is a progress bar (checking for the standard Android progress bar)
      * and then wait for it to disappear (or the function will eventually
      * report an error) and then will check if there is any choice to try again.
-     *
      * @param classToLoad              The class to load. This needs to be a subclass of android.view.View.
      * @param noObjects                The number of objects of the specified class that this method will expect.
      * @param numberTries              Use this parameter to allow multiple attempts to find the View. Useful if network conditions are suboptimal.
@@ -303,7 +297,6 @@ public class generalMethods extends MainClass {
     public int getRandomNumber(int i){
         Random rn = new Random();
         return rn.nextInt(i);
-
     }
 
     /**
