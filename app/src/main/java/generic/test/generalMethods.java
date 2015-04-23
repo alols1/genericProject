@@ -15,7 +15,7 @@ public class generalMethods extends MainClass {
 
     /**
      * Clicks on a button with the specified String. Does not take into account upper or lower case.
-     * This is the same as calling solo.clickOnText(text), but matches regardless of case.
+     * This is the same as calling solo.clickOnText(text), but matches regardless of case and works for regular expressions.
      * @param text The text String to search for. This should contain no special characters.
      */
     protected void clickOnTextCaseInsensitive(String text) {
@@ -26,7 +26,7 @@ public class generalMethods extends MainClass {
     /**
      * Searches for the specified String, and returns True if the String was found.
      * Does not take into account upper or lower case.
-     * This is the same as calling solo.searchText(text), but matches regardless of case.
+     * This is the same as calling solo.searchText(text), but matches regardless of case and works for regular expressions.
      * @param text The text String to search for. This should contain no special characters.
      * @return True if the String was found.
      */
@@ -38,7 +38,7 @@ public class generalMethods extends MainClass {
     /**
      * Searches for the specified String, and returns True if the String was found.
      * Does not take into account upper or lower case.
-     * This is the same as calling solo.searchText(text), but matches regardless of case.
+     * This is the same as calling solo.searchText(text), but matches regardless of case and works for regular expressions.
      * @param text        The text String to search for. This should contain no special characters.
      * @param onlyVisible Whether or not Solo should attempt to scroll in order to find the specified String.
      * @return True if the String was found.
